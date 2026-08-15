@@ -22,6 +22,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import { logout } from "@/app/auth/actions";
+import { Logo } from "@/components/shared/logo";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -59,12 +60,7 @@ export function Sidebar({ userEmail, userName, userAvatar }: { userEmail?: strin
     <div className="flex h-screen w-64 flex-col border-r bg-sidebar text-sidebar-foreground">
       {/* Logo Area */}
       <div className="flex h-16 items-center px-6 border-b border-border/50">
-        <div className="flex items-center gap-2 font-bold text-lg tracking-tight">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Wand2 className="h-5 w-5" />
-          </div>
-          PulliX
-        </div>
+        <Logo href="/dashboard" />
       </div>
 
       {/* Navigation */}

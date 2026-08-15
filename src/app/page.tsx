@@ -5,18 +5,48 @@ import { Card, CardContent } from "@/components/ui/card";
 import { OrbitalHeroSection } from "@/components/features/orbital-hero";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/shared/logo";
+import { FeatureCard, FeatureType } from "@/components/ui/feature-card";
+
+const features: FeatureType[] = [
+  {
+    title: "Automated Security",
+    icon: ShieldCheck,
+    description: "Detect vulnerabilities, hardcoded secrets, and dependency risks before they reach production.",
+  },
+  {
+    title: "AI Code Review",
+    icon: Code2,
+    description: "Get instant, context-aware suggestions for refactoring, performance, and maintainability.",
+  },
+  {
+    title: "Architecture Mapping",
+    icon: LineChart,
+    description: "Automatically visualize your system architecture and identify single points of failure.",
+  },
+  {
+    title: "Zero Configuration",
+    icon: Zap,
+    description: "Connect your GitHub repository and get insights within seconds. No complex setup required.",
+  },
+  {
+    title: "Code Explain",
+    icon: Wand2,
+    description: "Instantly understand complex legacy code with AI-generated explanations and flow charts.",
+  },
+  {
+    title: "Cost Estimator",
+    icon: SparklesIcon,
+    description: "Analyze your infrastructure code to predict cloud costs and identify optimization opportunities.",
+  },
+];
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
       {/* Navigation */}
       <header className="flex h-16 items-center justify-between px-6 md:px-12 border-b border-border/50 sticky top-0 bg-background/80 backdrop-blur-md z-50">
-        <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Wand2 className="h-5 w-5" />
-          </div>
-          PulliX
-        </div>
+        <Logo href="/" />
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hidden md:block">
@@ -61,36 +91,9 @@ export default function LandingPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <FeatureCard 
-              icon={<ShieldCheck className="h-6 w-6 text-primary" />}
-              title="Automated Security"
-              description="Detect vulnerabilities, hardcoded secrets, and dependency risks before they reach production."
-            />
-            <FeatureCard 
-              icon={<Code2 className="h-6 w-6 text-primary" />}
-              title="AI Code Review"
-              description="Get instant, context-aware suggestions for refactoring, performance, and maintainability."
-            />
-            <FeatureCard 
-              icon={<LineChart className="h-6 w-6 text-primary" />}
-              title="Architecture Mapping"
-              description="Automatically visualize your system architecture and identify single points of failure."
-            />
-            <FeatureCard 
-              icon={<Zap className="h-6 w-6 text-primary" />}
-              title="Zero Configuration"
-              description="Connect your GitHub repository and get insights within seconds. No complex setup required."
-            />
-            <FeatureCard 
-              icon={<Wand2 className="h-6 w-6 text-primary" />}
-              title="Code Explain"
-              description="Instantly understand complex legacy code with AI-generated explanations and flow charts."
-            />
-            <FeatureCard 
-              icon={<SparklesIcon className="h-6 w-6 text-primary" />}
-              title="Cost Estimator"
-              description="Analyze your infrastructure code to predict cloud costs and identify optimization opportunities."
-            />
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} feature={feature} />
+            ))}
           </div>
         </section>
 
@@ -120,22 +123,6 @@ export default function LandingPage() {
         <p>© 2026 PulliX. All rights reserved.</p>
       </footer>
     </div>
-  );
-}
-
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
-  return (
-    <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-colors h-full">
-      <CardContent className="p-6 flex flex-col gap-4">
-        <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-          {icon}
-        </div>
-        <h3 className="text-xl font-semibold">{title}</h3>
-        <p className="text-muted-foreground leading-relaxed flex-1">
-          {description}
-        </p>
-      </CardContent>
-    </Card>
   );
 }
 

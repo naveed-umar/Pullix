@@ -20,15 +20,17 @@ export function RefactoringMetric({ title, value, icon, details }: RefactoringMe
       <div className="relative group">
         <MetricCard title={title} value={value} icon={icon} />
         
-        <DialogTrigger asChild>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="absolute bottom-2 right-2 text-xs h-7 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur hover:bg-background"
-          >
-            View Details
-          </Button>
-        </DialogTrigger>
+        <DialogTrigger 
+          render={
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="absolute bottom-2 right-2 text-xs h-7 opacity-0 group-hover:opacity-100 transition-opacity bg-background/80 backdrop-blur hover:bg-background"
+            >
+              View Details
+            </Button>
+          }
+        />
       </div>
 
       <DialogContent className="sm:max-w-md border-border/50 bg-card/95 backdrop-blur-md">

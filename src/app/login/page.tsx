@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { LoginForm } from "@/components/auth/login-form";
 import { GithubAuthButton } from "@/components/auth/github-auth-button";
 
+import { Logo } from "@/components/shared/logo";
+
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4 relative">
@@ -16,9 +18,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md bg-card/50 backdrop-blur-sm border-border/50">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg">
-              <Wand2 className="h-6 w-6" />
-            </div>
+            <Logo size={48} showText={false} />
           </div>
           <CardTitle className="text-2xl font-bold tracking-tight">Welcome back</CardTitle>
           <CardDescription>
